@@ -40,4 +40,17 @@ public class UserServiceTests {
             System.out.println(e.getMessage());
         }
     }
+
+    @Test
+    public void login() {
+        try {
+            String username = "test3";
+            String password = "123";
+            User user = iUserService.login(username, password);
+            System.out.println("登录成功！" + user);
+        } catch (ServiceException e) {
+            System.out.println("登录失败！" + e.getClass().getSimpleName());
+            System.out.println(e.getMessage());
+        }
+    }
 }
