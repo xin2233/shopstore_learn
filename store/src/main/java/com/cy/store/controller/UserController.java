@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpSession;
+
 @RestController
 @RequestMapping("users")
 public class UserController extends BaseController {
@@ -25,8 +27,15 @@ public class UserController extends BaseController {
     }
 
     @RequestMapping("login")
-    public JsonResult<User> login(String username, String password) {
+    public JsonResult<User> login(String username, String password, HttpSession session) {
         User data = userService.login(username,password);
+
+        //登录成功后，将uid和username存入到HttpSession中
+        session.setAttribute("uid", data.getUid());
+        session.setAttribute("username", data.getUsername());
+        System.out.println("Session中的uid=" + getUidFromSession(session));
+        System.out.println("Session中的username=" + getUsernameFromSession(session));
+
         return new JsonResult<User>(OK, data);
     }
 }
