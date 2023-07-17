@@ -23,6 +23,12 @@ public class UserController extends BaseController {
         // 返回
         return new JsonResult<Void>(OK);
     }
+
+    @RequestMapping("login")
+    public JsonResult<User> login(String username, String password) {
+        User data = userService.login(username,password);
+        return new JsonResult<User>(OK, data);
+    }
 }
 
 

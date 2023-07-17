@@ -1,8 +1,6 @@
 package com.cy.store.controller;
 
-import com.cy.store.service.ex.InsertException;
-import com.cy.store.service.ex.ServiceException;
-import com.cy.store.service.ex.UsernameDuplicateException;
+import com.cy.store.service.ex.*;
 import com.cy.store.util.JsonResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -18,9 +16,15 @@ public class BaseController {
             result.setState(4000);
         } else if (e instanceof InsertException) {
             result.setState(5000);
+        } else if (e instanceof PasswordNotMatchException) {
+            result.setState(4001);
+        } else if (e instanceof UserNotFoundException) {
+            result.setState(4002);
         }
 
         return result;
     }
+
+
 
 }
