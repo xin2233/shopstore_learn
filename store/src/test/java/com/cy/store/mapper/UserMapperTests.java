@@ -38,4 +38,10 @@ public class UserMapperTests {
         User result = userMapper.findByUsername(username);
         System.out.println(result);
     }
+
+    @Test
+    public void print() {
+        System.out.println("============");
+        System.out.println("1111");
+    }
 }

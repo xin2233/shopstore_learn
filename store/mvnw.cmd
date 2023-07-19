@@ -37,6 +37,10 @@
 @echo off
 @REM set title of command window
 title %0
+
+rem 专门为win系统服务，用来设置java的bin目录，为后续测试进行配置
+set JAVA_HOME=D:\work\java
+
 @REM enable echoing by setting MAVEN_BATCH_ECHO to 'on'
 @if "%MAVEN_BATCH_ECHO%" == "on"  echo %MAVEN_BATCH_ECHO%
 
