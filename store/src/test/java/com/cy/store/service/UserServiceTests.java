@@ -23,7 +23,7 @@ public class UserServiceTests {
 //    Could not autowire. No beans of 'UserMapper' type found.
 //    idea有检测的功能，接口是不能够直接创建Bean的（动态代理计数来解决）
     @Autowired
-    private IUserService iUserService;
+    private IUserService userService;
 
     @Test
     public void reg() {
@@ -31,7 +31,7 @@ public class UserServiceTests {
             User user = new User();
             user.setUsername("test3");
             user.setPassword("123");
-            iUserService.reg(user);
+            userService.reg(user);
             System.out.println("插入ok");
         } catch (ServiceException e) {
 //            throw new RuntimeException(e);
@@ -45,10 +45,25 @@ public class UserServiceTests {
         try {
             String username = "test3";
             String password = "123";
-            User user = iUserService.login(username, password);
+            User user = userService.login(username, password);
             System.out.println("登录成功！" + user);
         } catch (ServiceException e) {
             System.out.println("登录失败！" + e.getClass().getSimpleName());
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    public void changePassword() {
+        try {
+            Integer uid = 5;
+            String username = "lower";
+            String oldPassword = "123456";
+            String newPassword = "888888";
+            userService.changePassword(uid, username, oldPassword, newPassword);
+            System.out.println("密码修改成功！");
+        } catch (ServiceException e) {
+            System.out.println("密码修改失败！" + e.getClass().getSimpleName());
             System.out.println(e.getMessage());
         }
     }
