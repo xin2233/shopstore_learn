@@ -38,6 +38,27 @@ public class UserController extends BaseController {
 
         return new JsonResult<User>(OK, data);
     }
+    /**
+    @RequestMapping("change_password")
+    public JsonResult<Void> changePassword(String oldPassword, String newPassword, HttpSession session) {
+        // 调用session.getAttribute("")获取uid和username
+        // 调用业务对象执行修改密码
+        // 返回成功
+
+        return null;
+    }
+    */
+
+    @RequestMapping("change_password")
+    public JsonResult<Void> changePassword(String oldPassword, String newPassword, HttpSession session) {
+        // 调用session.getAttribute("")获取uid和username
+        Integer uid = getUidFromSession(session);
+        String username = getUsernameFromSession(session);
+        // 调用业务对象执行修改密码
+        userService.changePassword(uid, username, oldPassword, newPassword);
+        // 返回成功
+        return new JsonResult<Void>(OK);
+    }
 }
 
 

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Date;
+
 // @RunWith(): 表示启动这个单元测试类（单元测试类是补丁够运行的），需要传递一个类，必须是springrunner的实例类
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -43,5 +45,15 @@ public class UserMapperTests {
     public void print() {
         System.out.println("============");
         System.out.println("1111");
+    }
+
+    @Test
+    public void updatePasswordByUid() {
+        Integer uid = 7;
+        String password = "123456";
+        String modifiedUser = "超级管理员";
+        Date modifiedTime = new Date();
+        Integer rows = userMapper.updatePasswordByUid(uid, password, modifiedUser, modifiedTime);
+        System.out.println("rows=" + rows);
     }
 }
