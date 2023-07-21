@@ -97,4 +97,18 @@ public class UserServiceTests {
             System.out.println(e.getMessage());
         }
     }
+
+    @Test
+    public void changeAvatar() {
+        try {
+            Integer uid = 20;
+            String username = "头像管理员";
+            String avatar = "/upload/avatar.png";
+            userService.changeAvatar(uid, username, avatar);
+            System.out.println("OK.");
+        } catch (ServiceException e) {
+            System.out.println(e.getClass().getSimpleName());
+            System.out.println(e.getMessage());
+        }
+    }
 }

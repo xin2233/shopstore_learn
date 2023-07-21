@@ -10,20 +10,34 @@ public class BaseController {
     /** 操作成功的状态码 */
     public static final int OK = 200;
 
-    /** @ExceptionHandler用于统一处理方法抛出的异常 */
-    @ExceptionHandler(ServiceException.class)
+    /**
+     * //@ExceptionHandler用于统一处理方法抛出的异常
+     * @param e
+     * @return
+     */
+    @ExceptionHandler({ServiceException.class, FileUploadException.class})
     public JsonResult<Void> handleException(Throwable e) {
         JsonResult<Void> result = new JsonResult<Void>(e);
         if (e instanceof UsernameDuplicateException) {
             result.setState(4000);
-        } else if (e instanceof InsertException) {
-            result.setState(5000);
-        } else if (e instanceof  UpdateException) {
-            result.setState(5001);
         } else if (e instanceof PasswordNotMatchException) {
             result.setState(4001);
         } else if (e instanceof UserNotFoundException) {
             result.setState(4002);
+        } else if (e instanceof InsertException) {
+            result.setState(5000);
+        } else if (e instanceof  UpdateException) {
+            result.setState(5001);
+        } else if (e instanceof FileEmptyException) {
+            result.setState(6000);
+        } else if (e instanceof FileSizeException) {
+            result.setState(6001);
+        } else if (e instanceof FileTypeException) {
+            result.setState(6002);
+        } else if (e instanceof FileStateException) {
+            result.setState(6003);
+        } else if (e instanceof FileUploadIOException) {
+            result.setState(6004);
         }
 
         return result;
