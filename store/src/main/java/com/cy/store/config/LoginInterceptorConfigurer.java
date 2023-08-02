@@ -36,6 +36,8 @@ public class LoginInterceptorConfigurer implements WebMvcConfigurer {
         patterns.add("/products/**");
 
         // 通过注册工具添加拦截器
-        registry.addInterceptor(interceptor).addPathPatterns("/**").excludePathPatterns(patterns);
+        registry.addInterceptor(interceptor)
+                .addPathPatterns("/**")
+                .excludePathPatterns(patterns);
     }
 }
