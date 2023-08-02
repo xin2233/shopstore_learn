@@ -6,6 +6,13 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 
+/**
+ * @Repository注解修饰哪个类表明这个类具有对数据库CRUD的功能，用在持久层的接口上。
+ * @Repository用于将数据访问层 (DAO 层 ) 的类标识为 Spring Bean。
+ * 具体只需将该注解标注在 DAO类上即可。
+ * 同时，为了让 Spring 能够扫描类路径中的类并识别出 @Repository 注解，
+ * 需要在 XML 配置文件中启用Bean 的自动扫描功能，这可以通过context:component-scan/实现。
+ */
 @Repository
 public interface UserMapper {
     /**
