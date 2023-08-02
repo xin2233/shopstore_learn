@@ -101,7 +101,7 @@ public class UserServiceTests {
     @Test
     public void changeAvatar() {
         try {
-            Integer uid = 20;
+            Integer uid = 5;
             String username = "头像管理员";
             String avatar = "/upload/avatar.png";
             userService.changeAvatar(uid, username, avatar);
