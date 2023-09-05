@@ -1,5 +1,6 @@
 # 参考资料不传
 data/
+.idea
 
 # Compiled class file
 *.class
