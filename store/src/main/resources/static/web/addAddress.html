@@ -307,6 +307,103 @@
 					}
 				});
 			});
+
+			let defaultOption = '<option value="0">----- 请选择 -----</option>';
+
+			$(document).ready(function() {
+				showProvinceList();
+				$("#city-list").append(defaultOption);
+				$("#area-list").append(defaultOption);
+			});
+
+			$("#province-list").change(function() {
+				showCityList();
+			});
+
+			$("#city-list").change(function() {
+				showAreaList();
+			});
+
+			function showProvinceList() {
+				$("#province-list").append(defaultOption);
+				$.ajax({
+					url: "/districts",
+					type: "GET",
+					data: "parent=86",
+					dataType: "JSON",
+					success: function(json) {
+						if (json.state == 200) {
+							let list = json.data;
+							console.log("count=" + list.length);
+							for (let i = 0; i < list.length; i++) {
+								console.log(list[i].name);
+								let option = '<option value="' + list[i].code + '">' + list[i].name + '</option>';
+								$("#province-list").append(option);
+							}
+						}
+					}
+				});
+			}
+
+			function showCityList() {
+				let parent = $("#province-list").val();
+				$("#city-list").empty();
+				$("#area-list").empty();
+
+				$("#city-list").append(defaultOption);
+				$("#area-list").append(defaultOption);
+
+				if (parent == 0) {
+					return;
+				}
+
+				$.ajax({
+					url: "/districts",
+					type: "GET",
+					data: "parent=" + parent,
+					dataType: "JSON",
+					success: function(json) {
+						if (json.state == 200) {
+							let list = json.data;
+							console.log("count=" + list.length);
+							for (let i = 0; i < list.length; i++) {
+								console.log(list[i].name);
+								let option = '<option value="' + list[i].code + '">' + list[i].name + '</option>';
+								$("#city-list").append(option);
+							}
+						}
+					}
+				});
+			}
+
+			function showAreaList() {
+				let parent = $("#city-list").val();
+				$("#area-list").empty();
+				$("#area-list").append(defaultOption);
+
+				if (parent == 0) {
+					return;
+				}
+
+				$.ajax({
+					url: "/districts",
+					type: "GET",
+					data: "parent=" + parent,
+					dataType: "JSON",
+					success: function(json) {
+						if (json.state == 200) {
+							let list = json.data;
+							console.log("count=" + list.length);
+							for (let i = 0; i < list.length; i++) {
+								console.log(list[i].name);
+								let option = '<option value="' + list[i].code + '">' + list[i].name + '</option>';
+								$("#area-list").append(option);
+							}
+						}
+					}
+				});
+			}
+
 		</script>
 	</body>
 
