@@ -1,7 +1,9 @@
 # shopstore_learn
+
 for学习，电脑商城
 
-## maven脚本使用方法：
+## 1、 maven脚本使用方法：
+
 ```bash
 No goals have been specified for this build. You must specify a valid lifecycle phase or a goal in the format <plugin-prefix>:<goal> or <plugin-group-id>:<plugin-artifact-id>[:<plugin-version>]:<goal>. Available lifecycle phases are: validate, initialize, generate-sources, process-sources, generate-resources, process-resources, compile, process-classes, generate-test-sources, process-test-sources, generate-test-resources, process-test-resources, test-compile, process-test-classes, test, prepare-package, package, pre-integration-test, integration-test, post-integration-test, verify, install, deploy, pre-clean, clean, post-clean, pre-site, site, post-site, site-deploy. -> [Help 1]
 
@@ -13,8 +15,10 @@ win环境需要编辑mvnw.cmd脚本，配置 JAVA_HOME=\path\to\java\,例如：s
 ./mvnw.cmd package
 ```
 
-## win环境下命令行启动spring boot
+## 2、win环境下命令行启动spring boot
+
 mvn 不行的话，就改成mvnw.cmd
+
 ```bash
 windows操作系统下命令行的启动方式
 
@@ -32,10 +36,10 @@ windows操作系统下命令行的启动方式
 
 找到jar文件
 3：用java命令直接启动 java -jar girl-0.0.1-SNAPSHOT.jar
-
 ```
 
-## win 命令行运行spring test
+## 3、win 命令行运行spring test
+
 ```
 mvnw.cmd  test -Dtest=com.cy.store.mapper.UserMapperTests#print
 mvnw.cmd test -Dtest=类名#方法名
