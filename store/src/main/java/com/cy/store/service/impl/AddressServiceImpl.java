@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class AddressServiceImpl implements IAddressService {
@@ -79,6 +80,22 @@ public class AddressServiceImpl implements IAddressService {
             // 是：抛出InsertException
             throw new InsertException("插入收货地址数据时出现未知错误，请联系系统管理员！");
         }
+    }
+
+    @Override
+    public List<Address> getByUid(Integer uid) {
+        List<Address> list = addressMapper.findByUid(uid);
+        for (Address address : list) {
+            address.setUid(null);
+            address.setProvinceCode(null);
+            address.setCityCode(null);
+            address.setAreaCode(null);
+            address.setCreatedUser(null);
+            address.setCreatedTime(null);
+            address.setModifiedUser(null);
+            address.setModifiedTime(null);
+        }
+        return list;
     }
 
 }

@@ -43,4 +43,5 @@ public class AddressMapperTests {
             System.out.println(item);
         }
     }
+
 }
