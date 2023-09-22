@@ -3,6 +3,7 @@ package com.cy.store.service.impl;
 import com.cy.store.entity.Address;
 import com.cy.store.mapper.AddressMapper;
 import com.cy.store.service.IAddressService;
+import com.cy.store.service.IDistrictService;
 import com.cy.store.service.ex.AddressCountLimitException;
 import com.cy.store.service.ex.InsertException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ import java.util.Date;
 
 @Service
 public class AddressServiceImpl implements IAddressService {
+    @Autowired
+    private IDistrictService districtService;
+
     @Autowired
     private AddressMapper addressMapper;
 
@@ -60,6 +64,14 @@ public class AddressServiceImpl implements IAddressService {
         address.setModifiedUser(username);
         address.setModifiedTime(now);
 
+        // 补全数据：省、市、区的名称
+        String provinceName = districtService.getNameByCode(address.getProvinceCode());
+        String cityName = districtService.getNameByCode(address.getCityCode());
+        String areaName = districtService.getNameByCode(address.getAreaCode());
+        address.setProvinceName(provinceName);
+        address.setCityName(cityName);
+        address.setAreaName(areaName);
+
         // 调用addressMapper的insert(Address address)方法插入收货地址数据，并获取返回的受影响行数
         Integer rows = addressMapper.insert(address);
         // 判断受影响行数是否不为1
@@ -68,4 +80,5 @@ public class AddressServiceImpl implements IAddressService {
             throw new InsertException("插入收货地址数据时出现未知错误，请联系系统管理员！");
         }
     }
+
 }
