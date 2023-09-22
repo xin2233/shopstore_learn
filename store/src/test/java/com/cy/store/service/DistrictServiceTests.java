@@ -30,4 +30,16 @@ public class DistrictServiceTests {
             System.out.println(e.getMessage());
         }
     }
+
+    @Test
+    public void getNameByCode() {
+        try {
+            String code = "430000";
+            String result = districtService.getNameByCode(code);
+            System.out.println(result);
+        } catch (ServiceException e) {
+            System.out.println(e.getClass().getSimpleName());
+            System.out.println(e.getMessage());
+        }
+    }
 }
