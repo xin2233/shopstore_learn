@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class AddressServiceTests {
@@ -28,6 +30,16 @@ public class AddressServiceTests {
         } catch (ServiceException e) {
             System.out.println(e.getClass().getSimpleName());
             System.out.println(e.getMessage());
+        }
+    }
+
+    @Test
+    public void getByUid() {
+        Integer uid = 26;
+        List<Address> list = addressService.getByUid(uid);
+        System.out.println("count=" + list.size());
+        for (Address item : list) {
+            System.out.println(item);
         }
     }
 }
