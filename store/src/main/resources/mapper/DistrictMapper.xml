@@ -14,4 +14,14 @@
         ORDER BY
         code ASC
     </select>
+
+    <!-- 根据省/市/区的行政代号获取省/市/区的名称：String findNameByCode(String code) -->
+    <select id="findNameByCode" resultType="java.lang.String">
+        SELECT
+        name
+        FROM
+        t_dict_district
+        WHERE
+        code=#{code}
+    </select>
 </mapper>

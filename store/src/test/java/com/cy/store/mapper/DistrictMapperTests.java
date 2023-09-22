@@ -24,4 +24,11 @@ public class DistrictMapperTests {
             System.out.println(district);
         }
     }
+
+    @Test
+    public void findNameByCode() {
+        String code = "540000";
+        String name = districtMapper.findNameByCode(code);
+        System.out.println(name);
+    }
 }
