@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RequestMapping("districts")
 @RestController
+@RequestMapping("districts")
 public class DistrictController extends BaseController {
     @Autowired
     private IDistrictService districtService;

@@ -1,0 +1,6 @@
+问题1：
+java.lang.IllegalArgumentException: Result Maps collection does not contain value for com.cy.store.mapper.AddressMapper.AddressEntityMap
+
+在mapper.xml文件中 将resultType 和resultMap 混淆
+site：https://blog.csdn.net/qq_43614498/article/details/105771729
+

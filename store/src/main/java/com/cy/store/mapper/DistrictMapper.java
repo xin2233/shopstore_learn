@@ -1,10 +1,12 @@
 package com.cy.store.mapper;
 
 import com.cy.store.entity.District;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /** 处理省/市/区数据的持久层接口 */
+@Repository
 public interface DistrictMapper {
     /**
      * 获取全国所有省/某省所有市/某市所有区
