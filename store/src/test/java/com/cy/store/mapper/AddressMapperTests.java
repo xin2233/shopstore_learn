@@ -68,4 +68,18 @@ public class AddressMapperTests {
         System.out.println(result);
     }
 
+    @Test
+    public void deleteByAid() {
+        Integer aid = 4;
+        Integer rows = addressMapper.deleteByAid(aid);
+        System.out.println("rows=" + rows);
+    }
+
+    @Test
+    public void findLastModified() {
+        Integer uid = 30;
+        Address result = addressMapper.findLastModified(uid);
+        System.out.println(result);
+    }
+
 }
