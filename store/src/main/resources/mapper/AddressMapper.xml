@@ -87,4 +87,25 @@
         WHERE
         aid=#{aid}
     </select>
+
+    <!-- 根据收货地址id删除数据：Integer deleteByAid(Integer aid) -->
+    <delete id="deleteByAid">
+        DELETE FROM
+        t_address
+        WHERE
+        aid=#{aid}
+    </delete>
+
+    <!-- 查询某用户最后修改的收货地址：Address findLastModified(Integer uid) -->
+    <select id="findLastModified" resultMap="AddressEntityMap">
+        SELECT
+        *
+        FROM
+        t_address
+        WHERE
+        uid=#{uid}
+        ORDER BY
+        modified_time DESC
+        LIMIT 0,1
+    </select>
 </mapper>
