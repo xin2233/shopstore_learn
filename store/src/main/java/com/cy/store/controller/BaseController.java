@@ -26,10 +26,16 @@ public class BaseController {
             result.setState(4002);
         } else if (e instanceof AddressCountLimitException) {
             result.setState(4003);
+        } else if (e instanceof AddressNotFoundException) {
+            result.setState(4004);
+        } else if (e instanceof AccessDeniedException) {
+            result.setState(4005);
         } else if (e instanceof InsertException) {
             result.setState(5000);
         } else if (e instanceof  UpdateException) {
             result.setState(5001);
+        } else if (e instanceof DeleteException) {
+            result.setState(5002);
         } else if (e instanceof FileEmptyException) {
             result.setState(6000);
         } else if (e instanceof FileSizeException) {
@@ -40,10 +46,6 @@ public class BaseController {
             result.setState(6003);
         } else if (e instanceof FileUploadIOException) {
             result.setState(6004);
-        } else if (e instanceof AddressNotFoundException) {
-            result.setState(4004);
-        } else if (e instanceof AccessDeniedException) {
-            result.setState(4005);
         }
 
         return result;
