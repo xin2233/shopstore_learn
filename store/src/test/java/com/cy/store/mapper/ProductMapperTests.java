@@ -23,4 +23,11 @@ public class ProductMapperTests {
             System.out.println(item);
         }
     }
+    
+    @Test
+    public void findById() {
+        Integer id = 10000017;
+        Product result = productMapper.findById(id);
+        System.out.println(result);
+    }
 }
