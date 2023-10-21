@@ -29,4 +29,16 @@ public class ProductServiceTests {
             System.out.println(e.getMessage());
         }
     }
+
+    @Test
+    public void findById() {
+        try {
+            Integer id = 100000179;
+            Product result = productService.findById(id);
+            System.out.println(result);
+        } catch (ServiceException e) {
+            System.out.println(e.getClass().getSimpleName());
+            System.out.println(e.getMessage());
+        }
+    }
 }
