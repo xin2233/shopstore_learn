@@ -11,6 +11,7 @@ import com.cy.store.vo.CartVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /** 处理购物车数据的业务层实现类 */
@@ -99,5 +100,25 @@ public class CartServiceImpl implements ICartService {
 
         // 返回新的数量
         return num;
+    }
+
+    @Override
+    public List<CartVO> getVOByCids(Integer uid, Integer[] cids) {
+        List<CartVO> list = cartMapper.findVOByCids(cids);
+        /**
+         for (CartVO cart : list) {
+         if (!cart.getUid().equals(uid)) {
+         list.remove(cart);
+         }
+         }
+         */
+        Iterator<CartVO> it = list.iterator();
+        while (it.hasNext()) {
+            CartVO cart = it.next();
+            if (!cart.getUid().equals(uid)) {
+                it.remove();
+            }
+        }
+        return list;
     }
 }
