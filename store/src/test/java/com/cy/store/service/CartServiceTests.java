@@ -38,4 +38,18 @@ public class CartServiceTests {
             System.out.println(item);
         }
     }
+
+    @Test
+    public void addNum() {
+        try {
+            Integer cid = 6;
+            Integer uid = 31;
+            String username = "管理员";
+            Integer num = cartService.addNum(cid, uid, username);
+            System.out.println("OK. New num=" + num);
+        } catch (ServiceException e) {
+            System.out.println(e.getClass().getSimpleName());
+            System.out.println(e.getMessage());
+        }
+    }
 }
