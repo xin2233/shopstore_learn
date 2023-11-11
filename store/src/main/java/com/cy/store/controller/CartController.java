@@ -48,4 +48,14 @@ public class CartController extends BaseController {
         // 返回成功
         return new JsonResult<Integer>(OK, data);
     }
+
+    @GetMapping("list")
+    public JsonResult<List<CartVO>> getVOByCids(Integer[] cids, HttpSession session) {
+        // 从Session中获取uid
+        Integer uid = getUidFromSession(session);
+        // 调用业务对象执行查询数据
+        List<CartVO> data = cartService.getVOByCids(uid, cids);
+        // 返回成功与数据
+        return new JsonResult<>(OK, data);
+    }
 }
