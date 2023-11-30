@@ -3,7 +3,7 @@
 
 spring:
   datasource:
-    url: jdbc:mysql://10.63.11.24:3307/shopstore?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://10.63.11.29:3307/shopstore?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
     password: 123456
     #3.为了便于查询JSON数据，隐藏没有值的属性，减少流量的消耗，服务器不应该向客户端响应为NULL的属性。可以在属性或类之前添加@JsonInclude(value=Include.NON_NULL)，也可以在application.properties中添加全局的配置。

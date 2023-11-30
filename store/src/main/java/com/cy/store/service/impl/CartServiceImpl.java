@@ -54,7 +54,7 @@ public class CartServiceImpl implements ICartService {
         } else {
             // 否：表示该用户的购物车中已有该商品
             // 从查询结果中获取购物车数据的id
-            Integer cid = result.getCid();
+//            Integer cid = result.getCid();
             // 从查询结果中取出原数量，与参数amount相加，得到新的数量
             Integer num = result.getNum() + amount;
             // 执行更新数量
